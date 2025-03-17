@@ -2,15 +2,21 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
-    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(background.jpg);
+    background-image: url(pic/background.JPEG);
+    /*linear-gradient(rgba(4,9,30,0.5), rgba(4,9,30,0.5)),*/
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #ffffff;
+    background-repeat: no-repeat;
+    background-color: #272727;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
+.result {
+    color:#fff;
+    font-weight: bold;
+}
 #app h2 {
     text-align: center;
     color: #ffffff;
@@ -18,54 +24,42 @@ body {
     margin-bottom: 20px;
 }
 
-/* 讓 input 和 select 在同一行顯示 */
 #app {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 置中所有元素 */
+    align-items: center;
 }
 
 #app .search-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px; /* 讓 input 和 select 之間有間距 */
+    gap: 15px; 
     max-width: 800px; 
-    margin: 0 auto 20px; /* 置中並給予間距 */
+    margin: 0 auto 20px; 
 }
 
 /* 搜尋框 */
 #app input {
-    flex: 1;  /* 讓輸入框自動填滿剩餘空間 */
+    flex: 1;  
     padding: 12px 20px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #151515; 
     border-radius: 25px;
     outline: none;
-    transition: 0.3s;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-#app input:focus {
-    border-color: #5a9aff;
-    box-shadow: 0px 3px 12px rgba(90, 154, 255, 0.5);
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 /* 篩選選單 */
 #app select {
     padding: 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 2px solid #151515; 
     border-radius: 25px;
     outline: none;
     cursor: pointer;
-    transition: 0.3s;
-    background-color: #fff;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-#app select:hover {
-    background-color: #f4f4f4;
+    background-color: rgba(255, 255, 255, 0.85); 
 }
 
 #app div {
@@ -80,7 +74,7 @@ body {
 }
 
 #app ul li {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 12px;
     margin: 15px auto;
@@ -88,7 +82,7 @@ body {
     max-width: 800px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
     transition: transform 0.3s, box-shadow 0.3s;
-    color: rgb(0, 0, 0);
+    color: #151515;
 }
 
 #app ul li:hover {
@@ -97,7 +91,7 @@ body {
 }
 
 #app ul li a {
-    color: #007bff;
+    color: #5b3939;
     font-weight: bold;
     text-decoration: none;
     transition: 0.3s;
@@ -106,4 +100,109 @@ body {
 #app ul li a:hover {
     color: #0056b3;
     text-decoration: underline;
+}
+
+#app .load-more {
+    color: #000;
+    padding: 12px;
+    margin: 15px auto;
+    width: 20%;
+    max-width: 800px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#app .load-more:hover {
+    color: #fff;
+    background-color: #727171;
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-avatar {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%; 
+    border: 2px solid #fff; 
+    object-fit: cover;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #f7f9fa;
+    color: rgb(35, 34, 34);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.3s;
+    width: 100px;
+    font-weight: bold;
+
+}
+
+.back-to-top.show {
+    display: block;
+    opacity: 1;
+}
+
+.back-to-top:hover {
+   background-color: #817e7e;
+   color: #fff
+}
+
+.header-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 160px; /* 高度 200px */
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+    z-index: 1; /* 確保在內容上層 */
+    pointer-events: none; /* 不影響點擊 */
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+        gap: 5px;
+        width: 90%;
+    }
+
+    input, select {
+        width: 100%;
+        max-width: none;
+    }
+
+    #app ul li {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 15px;
+        max-width: 400px;
+    }
+
+    .load-more {
+        width: 100%;
+        max-width: 150px;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 80px;
+        padding: 8px 12px;
+    }
 }
